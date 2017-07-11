@@ -5,6 +5,7 @@ import { Layout, Header, Drawer, Navigation, Content } from 'react-mdl';
 
 import About from './components/About';
 import Home from './components/Home';
+import Login from './components/Login';
 
 const RouteHideDrawer = ({ component: Component, ...rest }) => (
   <Route {...rest} render={() => {
@@ -24,11 +25,13 @@ export default () => (
         <Navigation>
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
+          <Link to="/login">Login</Link>
         </Navigation>
       </Drawer>
       <Content>
         <RouteHideDrawer exact path="/" component={ Home } />
         <RouteHideDrawer path="/about" component={ About } />
+        <RouteHideDrawer path="/login" component={ Login } />
       </Content>
     </Layout>
   </Router>
