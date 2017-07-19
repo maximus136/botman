@@ -1,15 +1,32 @@
 {
   "presets": [
-    ["es2015", {"modules": false}],
-    "react"
+    [
+      "es2015",
+      {
+        "modules": false
+      }
+    ],
+    "react",
+    "latest",
+    "stage-0"
   ],
-  "plugins": ["transform-object-rest-spread"],
+  "plugins": [
+    "transform-object-rest-spread",
+    "syntax-dynamic-import",
+    "transform-decorators-legacy",
+    "transform-react-constant-elements",
+    "transform-react-inline-elements"
+  ],
   "env": {
     "development": {
-      "plugins": ["react-hot-loader/babel"]
+      "plugins": [
+        "react-hot-loader/babel"
+      ]
     },
     "test": {
-      "plugins": ["transform-es2015-modules-commonjs"]
+      "plugins": [
+        "transform-es2015-modules-commonjs"
+      ]
     }
   }
 }

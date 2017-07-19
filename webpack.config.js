@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'sourcemap',
   entry: [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:3000',
@@ -22,6 +22,12 @@ module.exports = {
       template: 'public/index.html'
     })
   ],
+  resolve: {
+    alias: {
+      // directories must start with '/' to resolve correctly
+      altSrc: __dirname + '/src/alt'
+    }
+  },
   module: {
     loaders: [{
       test: /\.js$/,

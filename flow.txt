@@ -1,0 +1,26 @@
+login..-> send user details to api.ai -> get custom greeting message in json -> push message to allMsg array (array of objects).
+each msg object -> {
+    message: 'hi',
+    direction: in/out
+}
+user goes to chat page -> chat.js -> prints available greeting msg in chatbox.
+catch user message from input field -> add to allMsg array and send it to api.ai.
+chat.js prints all available messages in allMsg array.
+
+Chatboxjs contains Chat.js and UserInputJs
+- UserInput gets the input from user on submit.. updates allMsg store. also sends msg to api.ai and collects response and updates allmsg store. 
+- Chat.js listens to store and updates accordingly.
+
+store:
+all messages. stores allMsg array
+
+onsessionend or logout or if user moves away from chatbox.. send allmsg array to backend with authtoken.
+
+on landing - did-mount -> get allmsg array from backend as per authtoken and prefill.
+
+
+
+backend:
+
+will have a json with all courier orders.
+another json with authtoken and respective data.
