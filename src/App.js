@@ -72,7 +72,6 @@ export default () => (
             <Login />
           )
         )} />
-        <Login />
         <Route path="/chatbox" render={() => checkAuth(ChatBox)} />
       </Content>
     </Layout>

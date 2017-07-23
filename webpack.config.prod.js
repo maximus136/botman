@@ -1,7 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-var OfflinePlugin = require('offline-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 const FailPlugin = require('webpack-fail-plugin');
@@ -12,7 +11,7 @@ const pkg = require('./package.json');
 
 module.exports = {
   entry: {
-    vendor: Object.keys(pkg.dependencies).concat('./src/vendor'),
+    vendor: './src/vendor',
     app: './src/index'
   },
   output: {
@@ -65,10 +64,6 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
-    }),
-    new OfflinePlugin({
-      excludes: ["images/*"],
-      ServiceWorker: { events: true }
     })
   ],
   module: {
