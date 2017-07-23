@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import {appStart, getUserData} from '../helpers/auth';
+import {appStart, getUserData} from 'helpers/auth';
 
 
 class Login extends Component {
@@ -16,7 +16,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="md-grid">
+      <div className="md-grid google-sign-in">
       <h6>Sign in using your Google ID</h6>
       <div className="g-signin2" data-onsuccess="onSignIn"></div>
     </div>

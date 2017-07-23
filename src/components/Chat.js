@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
-import {appStart, getUserData} from '../helpers/auth';
+import {appStart, getUserData} from 'helpers/auth';
 import Message from './Message.js';
 
 const Chat = ({ allMessages }) => (
-  <div className="md-grid">
-    {allMessages.map((msg) => (
+  <div className="md-grid msg-wrap">
+    {allMessages && !!allMessages.length && allMessages.map((msg) => (
       <Message message={msg.message} direction={msg.direction}/>
     ))}
   </div>

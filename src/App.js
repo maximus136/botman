@@ -7,7 +7,7 @@ import About from './components/About';
 import Home from './components/Home';
 import Login from './components/Login';
 import ChatBox from './components/ChatBox';
-import {appStart, getUserData, logOut} from './helpers/auth';
+import {appStart, getUserData, logOut} from 'helpers/auth';
 
 /*const RouteHideDrawer = ({ component: Component, ...rest }) => (
   <Route {...rest} render={() => {
@@ -54,24 +54,25 @@ const checkAuth = (Component) => (
 export default () => (
   <Router>
     <Layout fixedHeader>
-      <Header title="PWA"/>
-      <Drawer title="PWA">
+      <Header title="Botman"/>
+      <Drawer title="Botman">
         <Navigation>
-          <Link to="/chatbox">Help Chat</Link>
-          <Link to="/about">About</Link>
+          <Link to="/chatbox">Botman</Link>
           <Link to="/">Login</Link>
           <Link to="/" onClick={signOut}>Logout</Link>
         </Navigation>
       </Drawer>
-      <Content>
-        <Route exact path="/" render={() => (
+      <Content className="start-page">
+        <h3>Welcome to <Link to="/chatbox">Botman</Link>
+        </h3>
+        <Route path="/" render={() => (
           getUserData('id') ? (
-            <Redirect to='/home'/>
+            <Redirect to='/chatbox'/>
           ) : (
             <Login />
           )
         )} />
-        <Route path="/about" render={() => checkAuth(About)} />
+        <Login />
         <Route path="/chatbox" render={() => checkAuth(ChatBox)} />
       </Content>
     </Layout>

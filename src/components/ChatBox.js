@@ -22,7 +22,6 @@ class ChatBox extends Component {
 
   render() {
     const { allMessages } = this.props;
-    console.log(allMessages);
 
     return (
       <div className="md-grid chat-box-container">

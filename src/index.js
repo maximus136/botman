@@ -2,8 +2,8 @@ import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import { render } from 'react-dom';
 import App from './App';
-import './style.css';
-import {appStart} from './helpers/auth';
+import './style.scss';
+import {appStart} from 'helpers/auth';
 
 const rootEl = document.getElementById('root');
 appStart();

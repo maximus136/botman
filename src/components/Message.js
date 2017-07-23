@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react';
-import {appStart, getUserData} from '../helpers/auth';
+import {appStart, getUserData} from 'helpers/auth';
 import classnames from 'classnames';
 
 const Message = ( props ) => {
   const { message, direction } = props;
 
   return (
-    <div className="md-grid">
-      <div className={classnames('msg-bubble', `msg-${direction}`)}>
+    <div className={classnames('md-grid', `msg-${direction}`)}>
+      <div className={classnames('msg-bubble', `msg-bubble-${direction}`)}>
         <span className="msg-text">
           {message}
         </span>

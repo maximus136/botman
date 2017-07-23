@@ -1,6 +1,9 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FailPlugin = require('webpack-fail-plugin');
+const autoprefixer = require('autoprefixer');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 module.exports = {
   devtool: 'sourcemap',
@@ -19,13 +22,28 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: 'public/index.html'
+      template: 'public/index.html',
+      serviceWorker: 'sw.js'
+    }),
+    
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: () => [autoprefixer]
+      }
+    }),
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'botman',
+      dontCacheBustUrlsMatching: /\.\w{8}\./,
+      filename: 'sw.js',
+      minify: true,
+      staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/]
     })
   ],
   resolve: {
     alias: {
       // directories must start with '/' to resolve correctly
-      altSrc: __dirname + '/src/alt'
+      altSrc: __dirname + '/src/alt',
+      helpers: __dirname + '/src/helpers'
     }
   },
   module: {
@@ -35,8 +53,24 @@ module.exports = {
       include: path.join(__dirname, 'src')
     },
     {
-      test: /\.css/,
-      loaders: ["style-loader", "css-loader"]
-    }]
+      test: /\.(css|scss)$/,
+      loaders: [
+        'style-loader',
+        'css-loader',
+        'sass-loader',
+        'postcss-loader'
+      ]
+    },
+    {
+      test: /\.(eot|svg|ttf|woff|woff2)$/,
+      loaders: [
+        'file-loader'
+      ]
+    },
+    { 
+      test: /\.(png|jpg|svg)$/,
+      loader: 'url-loader?limit=8192'
+    }
+  ]
   }
 };

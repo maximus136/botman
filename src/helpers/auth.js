@@ -42,7 +42,6 @@ const initSigninV2 = () => {
  * @param {boolean} val the updated signed out state.
  */
 const signinChanged = (val) => {
-  console.log('Signin state changed to ', val);
   <Redirect to='/home'/>
  // document.getElementById('signed-in-cell').innerText = val;
 };
@@ -53,7 +52,6 @@ const signinChanged = (val) => {
  * @param {GoogleUser} user the updated user.
  */
 const userChanged = (user) => {
-  console.log('User now: ', user);
   googleUser = user;
   getUserData('id');
   /*document.getElementById('curr-user-cell').innerText =
@@ -68,7 +66,7 @@ export function getUserData(type) {
   if(!googleUser) {
       return false;
   }
-
+  
   switch (type) {
     case 'id':
     	return googleUser.getId();
@@ -85,6 +83,7 @@ export function logOut() {
   const auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function () {
     console.log('User signed out.');
+    getUserData('id');
     <Redirect to='/'/>
   });
 }

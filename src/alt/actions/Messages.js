@@ -1,7 +1,8 @@
 import alt from 'altSrc';
 
 const MessageActions = alt.generateActions(
-  'messagePush'
+  'messagePush',
+  'historyUpdate'
 );
 
 export default MessageActions;
