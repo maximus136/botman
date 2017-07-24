@@ -42,7 +42,7 @@ const initSigninV2 = () => {
  * @param {boolean} val the updated signed out state.
  */
 const signinChanged = (val) => {
-  <Redirect to='/home'/>
+  <Redirect to='/chatbox'/>
  // document.getElementById('signed-in-cell').innerText = val;
 };
 

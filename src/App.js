@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
 import { Layout, Header, Drawer, Navigation, Content } from 'react-mdl';
-
-import About from './components/About';
-import Home from './components/Home';
 import Login from './components/Login';
 import ChatBox from './components/ChatBox';
 import {appStart, getUserData, logOut} from 'helpers/auth';
