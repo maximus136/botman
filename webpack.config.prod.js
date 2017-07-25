@@ -6,7 +6,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 const FailPlugin = require('webpack-fail-plugin');
 const autoprefixer = require('autoprefixer');
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 //const pkg = require('./package.json');
 
@@ -47,13 +46,6 @@ module.exports = {
       options: {
         postcss: () => [autoprefixer]
       }
-    }),
-    new SWPrecacheWebpackPlugin({
-      cacheId: 'botman',
-      dontCacheBustUrlsMatching: /\.\w{8}\./,
-      filename: 'sw.js',
-      minify: true,
-      staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/]
     }),
     new CopyWebpackPlugin([{ from: 'public/' }]),
     new webpack.optimize.CommonsChunkPlugin({
