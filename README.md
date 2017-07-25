@@ -1,15 +1,16 @@
 # botman
 
-#Small Talk#
-*Hi!*
-*Hello!*
-*How are you?*
-*Bye!*
+**Small Talk**
+- *Hi!*
+- *Hello!*
+- *How are you?*
+- *Bye!*
 
-#Available Testing Data for Packages:#
-*Where is my package?*
-*Track my package*
+**Available Testing Data for Packages:**
+- *Where is my package?*
+- *Track my package*
 
+```
 "packages": [
     {
       "trackingId": "1234",
@@ -84,3 +85,4 @@
     "phone": "+91 22 3123456"
   }
 }
+```
